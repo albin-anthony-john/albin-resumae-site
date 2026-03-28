@@ -1,0 +1,40 @@
+{
+  "name": "albin-resumae-site",
+  "version": "1.0.0",
+  "description": "The Resumae site for me.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Albintony/Albin-Resumae-Site.git"
+  },
+  "keywords": [],
+  "author": "Albin Antony",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Albintony/Albin-Resumae-Site/issues"
+  },
+  "homepage": "https://github.com/Albintony/Albin-Resumae-Site#readme",
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.2.2",
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.4.27",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.7.0",
+    "next": "^16.2.1",
+    "next-themes": "^0.4.6",
+    "postcss": "^8.5.8",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-icons": "^5.6.0",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^6.0.2"
+  }
+}
