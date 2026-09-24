@@ -4,7 +4,6 @@ import React from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/sections/Hero';
 import Skills from '@/components/sections/Skills';
-import Projects from '@/components/sections/Projects';
 import EngineeringMindset from '@/components/sections/EngineeringMindset';
 import PerformanceOptimizations from '@/components/sections/PerformanceOptimizations';
 import ProductionChallenges from '@/components/sections/ProductionChallenges';
@@ -23,7 +22,6 @@ export default function Home() {
         <Hero />
       </div>
       <Skills />
-      <Projects />
       <EngineeringMindset />
       <PerformanceOptimizations />
       <ProductionChallenges />

@@ -31,7 +31,7 @@ A modern, premium portfolio website showcasing expertise as a Senior Web Enginee
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/Albintony/Albin-Resumae-Site.git
+git clone https://github.com/albin-anthony-john/albin-resumae-site
 cd Albin-Resumae-Site
 ```
 
@@ -100,7 +100,7 @@ To customize the portfolio content, edit the data in `lib/data.ts`:
 
 The easiest way to deploy is using [Vercel](https://vercel.com):
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Albintony/Albin-Resumae-Site)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/albin-anthony-john/albin-resumae-site)
 
 ### Other Platforms
 
@@ -117,7 +117,7 @@ ISC License - feel free to use this as a template for your own portfolio!
 ## 👨‍💻 Author
 
 **Albin Antony**
-- Email: albintony2002@gmail.com
+- Email: albinanthony.tech@gmail.com
 - Phone: +91 7806879029
 - Location: Tamil Nadu, India
 

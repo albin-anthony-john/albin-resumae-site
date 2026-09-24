@@ -112,7 +112,6 @@ const Hero = () => {
           >
             <Button
               variant="primary"
-              size="lg"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               icon={<Mail className="w-5 h-5" />}
             >
@@ -120,8 +119,7 @@ const Hero = () => {
             </Button>
             <Button
               variant="outline"
-              size="lg"
-              onClick={() => window.open('/resume.pdf', '_blank')}
+              onClick={() => window.open('https://albin-cdn-assets.albinanthony-tech.workers.dev/albin-resumae/Albin_Antony_J_Resume.pdf', '_blank')}
               icon={<Download className="w-5 h-5" />}
             >
               Download Resume

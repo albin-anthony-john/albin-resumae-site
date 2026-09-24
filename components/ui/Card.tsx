@@ -7,22 +7,19 @@ interface CardProps {
   children: React.ReactNode;
   className?: string;
   hover?: boolean;
-  glass?: boolean;
 }
 
-const Card: React.FC<CardProps> = ({ 
-  children, 
-  className = '', 
+const Card: React.FC<CardProps> = ({
+  children,
+  className = '',
   hover = true,
-  glass = false 
 }) => {
-  const baseStyles = 'rounded-xl p-6 transition-all duration-300';
+  const baseStyles = 'rounded-xl p-6 transition-all duration-300 bg-white dark:bg-gray-800 shadow-lg';
   const hoverStyles = hover ? 'card-hover' : '';
-  const glassStyles = glass ? 'glass' : 'bg-white dark:bg-gray-800 shadow-lg';
-  
+
   return (
     <motion.div
-      className={`${baseStyles} ${hoverStyles} ${glassStyles} ${className}`}
+      className={`${baseStyles} ${hoverStyles} ${className}`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

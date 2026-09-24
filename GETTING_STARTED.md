@@ -16,7 +16,7 @@ Before you begin, make sure you have:
 
 ```bash
 # Clone the repository
-git clone https://github.com/Albintony/Albin-Resumae-Site.git
+git clone https://github.com/albin-anthony-john/albin-resumae-site
 
 # Navigate to the project
 cd Albin-Resumae-Site

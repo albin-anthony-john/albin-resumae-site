@@ -4,9 +4,9 @@ export const personalInfo = {
   subtitle: "Performance-Focused Backend Specialist | .NET Ecosystem Expert",
   location: "Viriyur 606402, Sankarapuram (Tk), Kallakurichi (Dt), Tamilnadu, India",
   phone: "+91 7806879029",
-  email: "albintony2002@gmail.com",
-  github: "https://github.com/albintony",
-  linkedin: "https://linkedin.com/in/albin-antony",
+  email: "albinanthony.tech@gmail.com",
+  github: "https://github.com/albin-anthony-john",
+  linkedin: "https://www.linkedin.com/in/albin-antony-784092410",
   summary: "Full Stack Engineer and System Architect specializing in high-performance, scalable enterprise solutions. Expert in designing and optimizing APIs handling 1M+ requests/day with <100ms latency. Proven track record of reducing infrastructure costs by 35% while serving 5M+ users at 99.9% uptime. Deep expertise in .NET ecosystem, cloud-native architectures, and production-grade system design.",
 };
 
@@ -41,141 +41,6 @@ export const skills = {
     { name: "Performance Optimization", level: 92 },
   ],
 };
-
-export const projects = [
-  {
-    id: 1,
-    title: "Enterprise Microservices Platform",
-    category: "Cloud Architecture",
-    description: "Designed and implemented a cloud-native microservices platform serving 5M+ monthly users",
-    problem: "Legacy monolithic application struggling with scalability, deployment bottlenecks, and increasing maintenance costs",
-    solution: "Architected and led migration to microservices using .NET Core, Docker, Kubernetes, and Azure Service Bus",
-    techStack: [".NET Core", "Kubernetes", "Azure", "Redis", "PostgreSQL", "RabbitMQ", "Docker"],
-    contributions: [
-      "Designed domain-driven microservices architecture with 15+ independent services",
-      "Implemented API Gateway pattern with rate limiting and circuit breakers",
-      "Set up distributed tracing and monitoring using Application Insights",
-      "Established CI/CD pipelines reducing deployment time by 80%",
-    ],
-    impact: {
-      performance: "99.9% uptime achieved",
-      scalability: "Handled 10x traffic spikes during peak seasons",
-      deployment: "Deployment time reduced from 4 hours to 15 minutes",
-      cost: "Infrastructure costs reduced by 35% through auto-scaling",
-    },
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "High-Performance Financial API",
-    category: "Backend Engineering",
-    description: "Built ultra-fast REST API processing 50K+ requests per second with sub-100ms latency",
-    problem: "Existing API couldn't handle growing transaction volumes, causing timeouts and revenue loss",
-    solution: "Developed high-performance API using .NET Minimal APIs, Redis caching, and optimized database queries",
-    techStack: [".NET 8", "Minimal APIs", "Redis", "SQL Server", "Dapper", "SignalR"],
-    contributions: [
-      "Implemented advanced caching strategies reducing database load by 70%",
-      "Optimized database queries and indexing strategies",
-      "Built real-time notification system using SignalR",
-      "Implemented comprehensive API security with JWT and OAuth 2.0",
-    ],
-    impact: {
-      performance: "Response time: 45ms average (previously 800ms)",
-      throughput: "50K requests/second capacity",
-      reliability: "Zero downtime during deployment",
-      revenue: "Prevented $2M+ annual revenue loss from timeouts",
-    },
-    featured: true,
-  },
-  {
-    id: 3,
-    title: "AI-Powered Analytics Dashboard",
-    category: "Full Stack Development",
-    description: "Real-time analytics platform integrating AI/ML models with interactive Power BI dashboards",
-    problem: "Business teams lacked real-time insights and had to wait days for manual reports",
-    solution: "Built full-stack solution with .NET backend, React frontend, and AI-powered predictive analytics",
-    techStack: ["ASP.NET Core", "React", "Power BI", "Azure ML", "SignalR", "MongoDB"],
-    contributions: [
-      "Integrated Azure Machine Learning models for predictive analytics",
-      "Developed real-time data processing pipeline handling 1M+ events/day",
-      "Created interactive dashboards with drill-down capabilities",
-      "Implemented role-based access control and data security",
-    ],
-    impact: {
-      efficiency: "Report generation time: instant (previously 2-3 days)",
-      accuracy: "87% prediction accuracy for sales forecasting",
-      adoption: "Used by 500+ business users daily",
-      decisions: "Enabled data-driven decisions reducing inventory costs by 22%",
-    },
-    featured: true,
-  },
-  {
-    id: 4,
-    title: "Blazor Enterprise SaaS Platform",
-    category: "Full Stack Development",
-    description: "Multi-tenant SaaS application with advanced security and compliance features",
-    problem: "Multiple customers needed isolated environments with strict security and compliance requirements",
-    solution: "Developed multi-tenant Blazor Server application with tenant isolation and enterprise features",
-    techStack: ["Blazor Server", "ASP.NET Core", "SQL Server", "Azure AD", "Redis"],
-    contributions: [
-      "Architected multi-tenancy with complete data isolation",
-      "Implemented SSO integration with Azure AD and OAuth providers",
-      "Built comprehensive audit logging and compliance reporting",
-      "Created reusable component library with 50+ components",
-    ],
-    impact: {
-      clients: "Serving 150+ enterprise clients",
-      security: "SOC 2 Type II compliant",
-      performance: "Interactive UI with <100ms response times",
-      development: "Component reusability improved development speed by 60%",
-    },
-    featured: true,
-  },
-  {
-    id: 5,
-    title: "Distributed Event Processing System",
-    category: "System Architecture",
-    description: "Event-driven architecture processing millions of events with guaranteed delivery",
-    problem: "System failures caused data loss and inconsistencies across distributed services",
-    solution: "Implemented event sourcing and CQRS patterns with guaranteed message delivery",
-    techStack: [".NET Core", "Kafka", "Event Store", "MongoDB", "PostgreSQL"],
-    contributions: [
-      "Designed event sourcing architecture with complete audit trail",
-      "Implemented CQRS pattern for read/write optimization",
-      "Built idempotent event handlers for exactly-once processing",
-      "Created automated event replay and recovery mechanisms",
-    ],
-    impact: {
-      reliability: "Zero data loss with 99.99% delivery guarantee",
-      performance: "Processing 5M+ events daily",
-      recovery: "Automated recovery from failures in <5 minutes",
-      compliance: "Complete audit trail for regulatory requirements",
-    },
-    featured: false,
-  },
-  {
-    id: 6,
-    title: "Legacy System Modernization",
-    category: "Migration & Refactoring",
-    description: "Modernized legacy .NET Framework monolith to cloud-native .NET Core architecture",
-    problem: "10-year-old .NET Framework application with high maintenance costs and no cloud support",
-    solution: "Phased migration to .NET Core with zero downtime using strangler fig pattern",
-    techStack: [".NET Core", "Azure App Service", "Azure SQL", "Azure DevOps"],
-    contributions: [
-      "Planned and executed phased migration strategy",
-      "Refactored legacy code to modern patterns and practices",
-      "Migrated on-premise SQL Server to Azure SQL with minimal downtime",
-      "Established automated testing achieving 85% code coverage",
-    ],
-    impact: {
-      performance: "Application startup time: 3s (previously 45s)",
-      maintenance: "Bug resolution time reduced by 65%",
-      cost: "Hosting costs reduced by 40%",
-      deployment: "Deployment frequency increased from monthly to daily",
-    },
-    featured: false,
-  },
-];
 
 export const experience = [
   {
@@ -247,14 +112,6 @@ export const strengths = [
     description: "Constantly learning new technologies and best practices, adapting quickly to evolving tech landscape",
     icon: "trending-up",
   },
-];
-
-export const certifications = [
-  "Microsoft Certified: Azure Solutions Architect Expert",
-  "Microsoft Certified: Azure Developer Associate",
-  ".NET Core Advanced Architecture & Design Patterns",
-  "Kubernetes Application Developer (CKAD)",
-  "AWS Certified Solutions Architect",
 ];
 
 export const testimonials = [

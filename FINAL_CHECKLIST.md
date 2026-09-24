@@ -78,12 +78,11 @@ Edit `lib/data.ts`:
 
 ```typescript
 export const personalInfo = {
-  name: "Albin Antony",           // ✅ Already your name
-  email: "albintony2002@gmail.com", // ✅ Already your email
-  phone: "+91 7806879029",         // ✅ Already your phone
-  github: "https://github.com/albintony",  // Update if different
-  linkedin: "https://linkedin.com/in/albin-antony", // Update if different
-  // ... rest is good to go!
+  name: "Albin Antony", 
+  email: "albinanthony.tech@gmail.com",
+  phone: "+91 7806879029",
+  github: "https://github.com/albin-anthony-john",
+  linkedin: "https://www.linkedin.com/in/albin-antony-784092410",
 };
 ```
 
@@ -417,7 +416,7 @@ You now have a **world-class portfolio** that:
 
 ## 📞 Quick Links
 
-- **Repository:** https://github.com/Albintony/Albin-Resumae-Site
+- **Repository:** https://github.com/albin-anthony-john/albin-resumae-site
 - **Deployment:** https://vercel.com
 - **Documentation:** See README.md
 - **Getting Started:** See GETTING_STARTED.md

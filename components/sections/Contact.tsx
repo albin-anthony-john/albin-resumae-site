@@ -292,7 +292,6 @@ const Contact = () => {
 
                 <Button
                   variant="primary"
-                  size="lg"
                   className="w-full"
                   icon={<Send className="w-5 h-5" />}
                 >

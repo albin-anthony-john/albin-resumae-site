@@ -26,7 +26,7 @@ const EngineeringMindset = () => {
   ];
 
   return (
-    <section id="mindset" className="py-20 bg-white dark:bg-gray-900">
+    <section id="mindset" className="py-20 bg-gray-50 dark:bg-gray-800">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
