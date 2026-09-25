@@ -119,7 +119,7 @@ const Hero = () => {
             </Button>
             <Button
               variant="outline"
-              onClick={() => window.open('https://albin-cdn-assets.albinanthony-tech.workers.dev/albin-resumae/Albin_Antony_J_Resume.pdf', '_blank')}
+              onClick={() => window.open('https://albin-cdn-assets.albinanthony-tech.workers.dev/albin-resumae/albin_anthony_resume.pdf', '_blank')}
               icon={<Download className="w-5 h-5" />}
             >
               Download Resume
