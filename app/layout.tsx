@@ -1,31 +1,79 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import StructuredData from "@/components/StructuredData";
+import { personalInfo } from "@/lib/data";
+import { getSiteUrl, siteConfig } from "@/lib/site";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], display: "swap" });
+
+const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
-  title: "Albin Antony - Full Stack Engineer & System Architect | Performance-Focused Backend Specialist",
-  description: "Full Stack Engineer specializing in high-performance APIs handling 1M+ requests/day with <100ms latency. Expert in .NET ecosystem, microservices architecture, and production-grade system design. Proven track record of reducing costs by 35% while serving 5M+ users at 99.9% uptime.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: siteConfig.defaultTitle,
+    template: `%s | ${personalInfo.name}`,
+  },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  authors: [{ name: personalInfo.name, url: siteUrl }],
+  creator: personalInfo.name,
   keywords: [
-    "Albin Antony",
+    personalInfo.name,
     "Full Stack Engineer",
     "System Architect",
-    "Performance Optimization",
-    ".NET Core Expert",
-    "Backend Specialist",
-    "Microservices Architect",
-    "High-Performance APIs",
-    "Cloud-Native Architecture",
-    "Production Engineering",
-    "System Design",
+    ".NET Developer",
+    "ASP.NET Core",
+    "Microservices",
+    "Azure",
+    "React",
+    "TypeScript",
+    "Backend Engineer India",
   ],
-  authors: [{ name: "Albin Antony" }],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  icons: {
+    icon: [{ url: siteConfig.faviconUrl, type: "image/png" }],
+    shortcut: siteConfig.faviconUrl,
+    apple: siteConfig.faviconUrl,
+  },
   openGraph: {
-    title: "Albin Antony - Full Stack Engineer & System Architect",
-    description: "Expert in designing high-performance, scalable systems. Proven track record with 1M+ requests/day, <100ms latency, and 99.9% uptime.",
     type: "website",
+    locale: siteConfig.locale,
+    url: "/",
+    siteName: personalInfo.name,
+    title: siteConfig.defaultTitle,
+    description: siteConfig.description,
+    images: [
+      {
+        url: siteConfig.ogImageUrl,
+        alt: `${personalInfo.name} — ${personalInfo.title}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.defaultTitle,
+    description: siteConfig.description,
+    images: [siteConfig.ogImageUrl],
+  },
+  category: "technology",
+  other: {
+    "geo.region": "IN-TN",
   },
 };
 
@@ -35,8 +83,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en-IN" suppressHydrationWarning>
       <body className={inter.className}>
+        <StructuredData />
+        <a href="#main-content" className="sr-only">
+          Skip to main content
+        </a>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>

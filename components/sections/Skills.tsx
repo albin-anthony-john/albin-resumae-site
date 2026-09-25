@@ -1,6 +1,5 @@
 "use client";
 
-import React from 'react';
 import { motion } from 'framer-motion';
 import Card from '../ui/Card';
 import SkillBar from '../ui/SkillBar';
@@ -28,7 +27,7 @@ const Skills = () => {
       color: 'from-orange-500 to-red-500',
     },
     {
-      title: 'Advanced Engineering',
+      title: 'Production Engineering',
       icon: <Zap className="w-8 h-8" />,
       skills: skills.advanced,
       color: 'from-green-500 to-teal-500',
@@ -87,8 +86,8 @@ const Skills = () => {
           className="mt-16 grid md:grid-cols-4 gap-6"
         >
           {[
-            { number: '8+', label: 'Years Experience' },
-            { number: '50+', label: 'Projects Delivered' },
+            { number: '3+', label: 'Years Experience' },
+            { number: '20+', label: 'Projects Delivered' },
             { number: '5M+', label: 'Users Served' },
             { number: '99.9%', label: 'Uptime Achieved' },
           ].map((stat, index) => (

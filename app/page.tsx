@@ -1,6 +1,3 @@
-"use client";
-
-import React from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/sections/Hero';
 import Skills from '@/components/sections/Skills';
@@ -16,7 +13,7 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main id="main-content" className="min-h-screen">
       <Header />
       <div id="home">
         <Hero />

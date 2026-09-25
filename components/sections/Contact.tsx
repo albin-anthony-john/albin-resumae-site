@@ -2,11 +2,18 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 import { personalInfo } from '@/lib/data';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Loader2 } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+
+const emailJsConfig = {
+  serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? '',
+  templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? '',
+  publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? '',
+};
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -17,18 +24,24 @@ const Contact = () => {
   });
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitMessage, setSubmitMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
-    // Clear error when user starts typing
     if (errors[e.target.name]) {
       setErrors({
         ...errors,
         [e.target.name]: '',
       });
+    }
+    if (submitStatus !== 'idle') {
+      setSubmitStatus('idle');
+      setSubmitMessage('');
     }
   };
 
@@ -56,25 +69,58 @@ const Contact = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     const newErrors = validate();
-    
-    if (Object.keys(newErrors).length === 0) {
-      // Create mailto link
-      const mailtoLink = `mailto:${personalInfo.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
-      window.location.href = mailtoLink;
-      
-      // Reset form
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    const { serviceId, templateId, publicKey } = emailJsConfig;
+
+    if (!serviceId || !templateId || !publicKey) {
+      setSubmitStatus('error');
+      setSubmitMessage(
+        'Email service is not configured. Please email me directly using the address on the left.'
+      );
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    setSubmitMessage('');
+
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          contact_info: formData.email,
+          title: formData.subject,
+          message: formData.message,
+        },
+        { publicKey }
+      );
+
+      setSubmitStatus('success');
+      setSubmitMessage('Thanks! Your message was sent successfully.');
       setFormData({
         name: '',
         email: '',
         subject: '',
         message: '',
       });
-    } else {
-      setErrors(newErrors);
+    } catch {
+      setSubmitStatus('error');
+      setSubmitMessage(
+        `Something went wrong. Please try again or email me at ${personalInfo.email}.`
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -92,7 +138,7 @@ const Contact = () => {
             Get In <span className="gradient-text">Touch</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Let's discuss your next big project or opportunity
+            Let&apos;s discuss your next big project or opportunity
           </p>
         </motion.div>
 
@@ -107,7 +153,7 @@ const Contact = () => {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
               Contact Information
             </h3>
-            
+
             <div className="space-y-6 mb-8">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-lg bg-blue-100 dark:bg-blue-900">
@@ -115,7 +161,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900 dark:text-white mb-1">Email</div>
-                  <a 
+                  <a
                     href={`mailto:${personalInfo.email}`}
                     className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                   >
@@ -130,7 +176,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900 dark:text-white mb-1">Phone</div>
-                  <a 
+                  <a
                     href={`tel:${personalInfo.phone}`}
                     className="text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
                   >
@@ -209,10 +255,10 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
           >
             <Card>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 <div>
                   <label htmlFor="name" className="block text-gray-700 dark:text-gray-300 font-medium mb-2">
-                    Name *
+                    Name <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -220,10 +266,11 @@ const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                     className={`w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-700 border ${
                       errors.name ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                    } focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white transition-colors`}
-                    placeholder="Your name"
+                    } focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white transition-colors disabled:opacity-60`}
+                    placeholder="Enter your name"
                   />
                   {errors.name && (
                     <p className="text-red-500 text-sm mt-1">{errors.name}</p>
@@ -232,7 +279,7 @@ const Contact = () => {
 
                 <div>
                   <label htmlFor="email" className="block text-gray-700 dark:text-gray-300 font-medium mb-2">
-                    Email *
+                    Email or Phone Number <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="email"
@@ -240,10 +287,11 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                     className={`w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-700 border ${
                       errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                    } focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white transition-colors`}
-                    placeholder="your.email@example.com"
+                    } focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white transition-colors disabled:opacity-60`}
+                    placeholder="Enter your email or phone number"
                   />
                   {errors.email && (
                     <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -252,7 +300,7 @@ const Contact = () => {
 
                 <div>
                   <label htmlFor="subject" className="block text-gray-700 dark:text-gray-300 font-medium mb-2">
-                    Subject *
+                    Subject <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -260,9 +308,10 @@ const Contact = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                     className={`w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-700 border ${
                       errors.subject ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                    } focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white transition-colors`}
+                    } focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white transition-colors disabled:opacity-60`}
                     placeholder="How can I help?"
                   />
                   {errors.subject && (
@@ -272,17 +321,18 @@ const Contact = () => {
 
                 <div>
                   <label htmlFor="message" className="block text-gray-700 dark:text-gray-300 font-medium mb-2">
-                    Message *
+                    Message <span className="text-red-500">*</span>
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                     rows={6}
                     className={`w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-700 border ${
                       errors.message ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
-                    } focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white transition-colors resize-none`}
+                    } focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white transition-colors resize-none disabled:opacity-60`}
                     placeholder="Tell me about your project or opportunity..."
                   />
                   {errors.message && (
@@ -290,12 +340,34 @@ const Contact = () => {
                   )}
                 </div>
 
+                {submitMessage && (
+                  <p
+                    role="status"
+                    aria-live="polite"
+                    className={`text-sm ${
+                      submitStatus === 'success'
+                        ? 'text-green-600 dark:text-green-400'
+                        : 'text-red-600 dark:text-red-400'
+                    }`}
+                  >
+                    {submitMessage}
+                  </p>
+                )}
+
                 <Button
+                  type="submit"
                   variant="primary"
                   className="w-full"
-                  icon={<Send className="w-5 h-5" />}
+                  disabled={isSubmitting}
+                  icon={
+                    isSubmitting ? (
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                    ) : (
+                      <Send className="w-5 h-5" />
+                    )
+                  }
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
               </form>
             </Card>

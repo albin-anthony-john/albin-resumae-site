@@ -6,6 +6,8 @@ import { motion } from 'framer-motion';
 interface ButtonProps {
   children: React.ReactNode;
   variant?: 'primary' | 'outline';
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
   onClick?: () => void;
   className?: string;
   icon?: React.ReactNode;
@@ -14,6 +16,8 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({
   children,
   variant = 'primary',
+  type = 'button',
+  disabled = false,
   onClick,
   className = '',
   icon,
@@ -29,10 +33,12 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <motion.button
+      type={type}
+      disabled={disabled}
       onClick={onClick}
       className={classes}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={disabled ? undefined : { scale: 1.05 }}
+      whileTap={disabled ? undefined : { scale: 0.95 }}
     >
       {icon && <span className="mr-2">{icon}</span>}
       {children}

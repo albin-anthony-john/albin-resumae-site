@@ -12,33 +12,28 @@ export const personalInfo = {
 
 export const skills = {
   backend: [
-    { name: ".NET Core / ASP.NET Core", level: 95 },
-    { name: "Web API & Minimal APIs", level: 95 },
-    { name: "Microservices Architecture", level: 90 },
-    { name: "System Design & Scalability", level: 90 },
-    { name: "Entity Framework Core", level: 88 },
-    { name: "Blazor", level: 85 },
+    { name: "ASP.NET Core & Minimal APIs", level: 95 },
+    { name: "Entity Framework Core & PostgreSQL", level: 88 },
+    { name: "Redis & Caching", level: 84 },
+    { name: "Microservices & System Design", level: 90 },
   ],
   cloud: [
-    { name: "Azure Cloud Services", level: 88 },
-    { name: "Docker & Kubernetes", level: 85 },
-    { name: "CI/CD Pipelines", level: 90 },
-    { name: "Infrastructure as Code", level: 82 },
-    { name: "Monitoring & Observability", level: 85 },
+    { name: "Azure App Service, SQL & Service Bus", level: 86 },
+    { name: "Docker & Kubernetes", level: 84 },
+    { name: "GitHub Actions & Git", level: 82 },
+    { name: "Application Insights & Observability", level: 78 },
   ],
   frontend: [
-    { name: "React.js", level: 88 },
-    { name: "Tailwind CSS", level: 90 },
-    { name: "TypeScript", level: 85 },
-    { name: "Bootstrap & Material UI", level: 85 },
-    { name: "Responsive Design", level: 92 },
+    { name: "React & TypeScript", level: 88 },
+    { name: "Tailwind CSS & Bootstrap", level: 86 },
+    { name: "Blazor", level: 80 },
+    { name: "jQuery", level: 90 },
   ],
   advanced: [
-    { name: "AI/LLM Integration", level: 80 },
-    { name: "Third-party API Integration", level: 90 },
-    { name: "Cybersecurity Best Practices", level: 85 },
-    { name: "Power BI & Analytics", level: 82 },
-    { name: "Performance Optimization", level: 92 },
+    { name: "API Performance Tuning", level: 92 },
+    { name: "OAuth 2.0 & JWT", level: 82 },
+    { name: "Azure Service Bus & Kafka", level: 78 },
+    { name: "AI & LLM Integration", level: 72 },
   ],
 };
 
@@ -46,7 +41,7 @@ export const experience = [
   {
     role: "Senior Full Stack Engineer",
     company: "Enterprise Solutions",
-    period: "2021 - Present",
+    period: "2025 - Present",
     highlights: [
       "Led architecture and development of microservices platform serving 5M+ users",
       "Designed and implemented high-performance APIs processing 50K+ requests/second",
@@ -58,7 +53,7 @@ export const experience = [
   {
     role: "Full Stack .NET Developer",
     company: "Tech Innovations",
-    period: "2019 - 2021",
+    period: "2024 - 2025",
     highlights: [
       "Built enterprise SaaS platform using Blazor and ASP.NET Core",
       "Implemented CI/CD pipelines reducing deployment time by 80%",
@@ -70,7 +65,7 @@ export const experience = [
   {
     role: "Software Engineer",
     company: "Digital Systems",
-    period: "2017 - 2019",
+    period: "2023 - 2024",
     highlights: [
       "Developed RESTful APIs and web applications using ASP.NET Core MVC",
       "Implemented authentication and authorization using Identity Server",
@@ -116,21 +111,21 @@ export const strengths = [
 
 export const testimonials = [
   {
-    name: "Sarah Johnson",
+    name: "Mr. Felix",
     role: "CTO, Enterprise Solutions",
     content: "Albin's expertise in system architecture and .NET ecosystem is exceptional. He transformed our monolithic application into a scalable microservices platform that handles millions of users effortlessly.",
     rating: 5,
   },
   {
-    name: "Michael Chen",
-    role: "Engineering Manager, Tech Innovations",
+    name: "Mr. Prathimanan",
+    role: "Senior Technical Lead, Tech Innovations",
     content: "One of the most talented engineers I've worked with. His ability to solve complex problems and mentor junior developers makes him invaluable to any team.",
     rating: 5,
   },
   {
-    name: "Priya Sharma",
-    role: "Product Director",
-    content: "Albin consistently delivers high-quality solutions on time. His technical depth combined with business understanding makes him a true full-stack architect.",
+    name: "Mrs. Logeswari",
+    role: "QA Lead, Quality Compliance",
+    content: "Albin consistently delivers high-quality solutions on time with no defects. His technical depth combined with business understanding makes him a true full-stack architect.",
     rating: 5,
   },
 ];

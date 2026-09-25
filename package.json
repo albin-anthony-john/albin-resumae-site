@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/albin-anthony-john/albin-resumae-site#readme",
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "framer-motion": "^13.4.3",
     "lucide-react": "^1.48.0",
     "next": "^16.3.6",
