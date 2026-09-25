@@ -15,6 +15,13 @@ const emailJsConfig = {
   publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? '',
 };
 
+const FIELD_LIMITS = {
+  name: 100,
+  email: 100,
+  subject: 100,
+  message: 500,
+} as const;
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -50,20 +57,26 @@ const Contact = () => {
 
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
+    } else if (formData.name.length > FIELD_LIMITS.name) {
+      newErrors.name = `Name must be ${FIELD_LIMITS.name} characters or less`;
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Invalid email format';
+      newErrors.email = 'Email or phone number is required';
+    } else if (formData.email.length > FIELD_LIMITS.email) {
+      newErrors.email = `Must be ${FIELD_LIMITS.email} characters or less`;
     }
 
     if (!formData.subject.trim()) {
       newErrors.subject = 'Subject is required';
+    } else if (formData.subject.length > FIELD_LIMITS.subject) {
+      newErrors.subject = `Subject must be ${FIELD_LIMITS.subject} characters or less`;
     }
 
     if (!formData.message.trim()) {
       newErrors.message = 'Message is required';
+    } else if (formData.message.length > FIELD_LIMITS.message) {
+      newErrors.message = `Message must be ${FIELD_LIMITS.message} characters or less`;
     }
 
     return newErrors;
@@ -267,6 +280,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     disabled={isSubmitting}
+                    maxLength={FIELD_LIMITS.name}
                     className={`w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-700 border ${
                       errors.name ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                     } focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white transition-colors disabled:opacity-60`}
@@ -279,15 +293,16 @@ const Contact = () => {
 
                 <div>
                   <label htmlFor="email" className="block text-gray-700 dark:text-gray-300 font-medium mb-2">
-                    Email or Phone Number <span className="text-red-500">*</span>
+                    Email or phone number <span className="text-red-500">*</span>
                   </label>
                   <input
-                    type="email"
+                    type="text"
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
                     disabled={isSubmitting}
+                    maxLength={FIELD_LIMITS.email}
                     className={`w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-700 border ${
                       errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                     } focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white transition-colors disabled:opacity-60`}
@@ -309,6 +324,7 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     disabled={isSubmitting}
+                    maxLength={FIELD_LIMITS.subject}
                     className={`w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-700 border ${
                       errors.subject ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                     } focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white transition-colors disabled:opacity-60`}
@@ -330,6 +346,7 @@ const Contact = () => {
                     onChange={handleChange}
                     disabled={isSubmitting}
                     rows={6}
+                    maxLength={FIELD_LIMITS.message}
                     className={`w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-700 border ${
                       errors.message ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                     } focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white transition-colors resize-none disabled:opacity-60`}
