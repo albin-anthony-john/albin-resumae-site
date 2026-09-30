@@ -6,7 +6,7 @@ export const personalInfo = {
   phone: "+91 7806879029",
   email: "albinanthony.tech@gmail.com",
   github: "https://github.com/albin-anthony-john",
-  linkedin: "https://www.linkedin.com/in/albin-antony-784092410",
+  linkedin: "https://www.linkedin.com/in/albin-anthony-john-784092410/",
   summary: "Full Stack Engineer and System Architect specializing in high-performance, scalable enterprise solutions. Expert in designing and optimizing APIs handling 1M+ requests/day with <100ms latency. Proven track record of reducing infrastructure costs by 35% while serving 5M+ users at 99.9% uptime. Deep expertise in .NET ecosystem, cloud-native architectures, and production-grade system design.",
 };
 
@@ -63,7 +63,7 @@ export const experience = [
     ],
   },
   {
-    role: "Software Engineer",
+    role: "Staff Intern & Associate .NET Developer",
     company: "Digital Systems",
     period: "2023 - 2024",
     highlights: [
@@ -214,16 +214,16 @@ export const engineeringMindset = {
 // Production Challenges Solved
 export const productionChallenges = [
   {
-    challenge: "Black Friday Traffic Spike",
-    situation: "E-commerce platform crashed during 10x traffic surge on Black Friday, losing $50K/hour in revenue",
+    challenge: "HIS Patient Module - Morning Peak Load",
+    situation: "Hospital Information System experienced heavy load during the 9:00-11:30 AM peak period, particularly across Patient Registration, Visit Management, and Pharmacy operations, causing performance degradation and slower user interactions.",
     action: [
-      "Implemented Redis caching layer reducing database load by 80%",
-      "Added CDN for static assets cutting response times by 60%",
-      "Set up auto-scaling groups handling traffic spikes automatically",
-      "Configured circuit breakers preventing cascade failures",
+      "Analyzed the Patient Module to identify performance bottlenecks during peak-hour patient registration, visit, and pharmacy workflows",
+      "Optimized database queries and data-access operations involved in high-frequency patient transactions",
+      "Reduced unnecessary processing and API/database calls across the affected workflows",
+      "Improved backend request handling to maintain consistent performance during concurrent peak-hour usage"
     ],
-    result: "System handled 15x traffic during next Black Friday with 99.99% uptime. Zero revenue loss.",
-    impact: "15x traffic capacity | 99.99% uptime | $0 revenue loss",
+    result: "Improved Patient Module performance and stability during the 9:00-11:30 AM peak period, enabling hospital staff to process patient registration, visits, and pharmacy operations more reliably.",
+    impact: "Improved peak-hour performance | Reduced transaction delays | More stable Patient Module"
   },
   {
     challenge: "Database Deadlock Crisis",
@@ -304,13 +304,13 @@ export const performanceOptimizations = [
   {
     project: "Infrastructure Cost Reduction",
     before: {
-      metric: "$12,000/month cloud costs",
+      metric: "₹1,20,000/month cloud costs",
       issues: ["Over-provisioned resources", "No auto-scaling", "Inefficient resource usage", "Always-on development environments"],
     },
     after: {
-      metric: "$7,800/month cloud costs",
+      metric: "₹78,000/month cloud costs",
       improvements: ["Right-sized instances", "Auto-scaling policies", "Spot instances for non-critical workloads", "Dev environment scheduling"],
     },
-    impact: "35% cost reduction | $50K+ annual savings | Same performance",
+    impact: "35% cost reduction | ₹50,000+ annual savings | Same performance",
   },
 ];

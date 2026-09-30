@@ -102,7 +102,7 @@ const PerformanceOptimizations = () => {
           {[
             { label: 'Average Performance Gain', value: '16x', color: 'from-blue-500 to-cyan-500' },
             { label: 'Response Time', value: '<100ms', color: 'from-green-500 to-emerald-500' },
-            { label: 'Cost Savings', value: '$50K+', color: 'from-purple-500 to-pink-500' },
+            { label: 'Cost Savings', value: '₹100,000+', color: 'from-purple-500 to-pink-500' },
             { label: 'Systems Optimized', value: '20+', color: 'from-orange-500 to-red-500' },
           ].map((stat, index) => (
             <div
